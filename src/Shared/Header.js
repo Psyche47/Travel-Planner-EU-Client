@@ -22,9 +22,9 @@ const Header = () => {
           <Navbar.Brand>
             <img
               alt=""
-              src="./logo.png"
-              width="70"
-              height="70"
+              src="./logo1.png"
+              width="60"
+              height="60"
               className="d-inline-block "
             />{" "}
             <NavLink to="/home" style={activeStyle}>
