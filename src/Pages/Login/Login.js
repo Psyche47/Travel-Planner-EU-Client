@@ -18,7 +18,7 @@ const Login = () => {
   } = useAuth();
 
   const location = useLocation();
-  const navigate = useHistory();
+  const history = useHistory();
   const redirect_uri = location.state?.from || "/home";
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,7 +27,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        navigate(redirect_uri);
+        history.push(redirect_uri);
       })
       .catch((err) => {
         const errorMessage = err.message;
@@ -43,7 +43,7 @@ const Login = () => {
     signInWithEmail()
       .then((result) => {
         setUser(result.user);
-        navigate(redirect_uri);
+        history.push(redirect_uri);
       })
       .catch((err) => {
         const errorMessage = "Invalid Email or Password, please try again.";

@@ -15,7 +15,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
-  const navigate = useHistory();
+  const history = useHistory();
   const {
     getEmail,
     getPassword,
@@ -38,7 +38,7 @@ const SignUp = () => {
             signUpWithEmail()
               .then((result) => {
                 alert("User has been Created!");
-                navigate("/home");
+                history.push("/home");
                 setUserName();
               })
               .catch((err) => {
