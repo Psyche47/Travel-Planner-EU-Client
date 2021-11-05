@@ -22,9 +22,9 @@ const Header = () => {
           <Navbar.Brand>
             <img
               alt=""
-              src="./logo1.png"
-              width="60"
-              height="60"
+              src="./logo.png"
+              width="50"
+              height="50"
               className="d-inline-block "
             />{" "}
             <NavLink to="/home" style={activeStyle}>
@@ -39,11 +39,11 @@ const Header = () => {
             <Nav.Link style={activeStyle} as={Link} to="/services">
               Services
             </Nav.Link>
-            <Nav.Link style={activeStyle} as={Link} to="/doctors">
-              Find A Doctor
+            <Nav.Link style={activeStyle} as={Link} to="/bookings">
+              My Bookings
             </Nav.Link>
-            <Nav.Link style={activeStyle} as={Link} to="/faq">
-              FAQ
+            <Nav.Link style={activeStyle} as={Link} to="/admin">
+              Admin
             </Nav.Link>
             {/* {user?.email ? (
               <Navbar.Text>
