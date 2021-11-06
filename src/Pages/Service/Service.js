@@ -22,7 +22,7 @@ const Service = ({ service }) => {
     width: "286px",
   };
   return (
-    <div className="col-lg-3 col-md-6 col-sm-12">
+    <div className="col-lg-4 col-md-6 col-sm-12">
       <Card style={{ width: "18rem" }} className="mt-3 g-2 mx-auto">
         <Card.Img
           variant="top"

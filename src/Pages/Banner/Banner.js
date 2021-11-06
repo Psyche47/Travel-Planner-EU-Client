@@ -3,9 +3,9 @@ import { Carousel, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 const Banner = () => {
   const imgGermany1 = "https://i.ibb.co/M76v0Cr/Germany.jpg";
-  const imgGermany2 = "https://i.ibb.co/Z60nHxT/Germany2.jpg";
+  const imgGermany2 = "https://i.ibb.co/tpkRQr5/Germany2.jpg";
   const imgSwitzerland = "https://i.ibb.co/pPvCKMM/Switzerland.jpg";
-  const imgPoland = "https://i.ibb.co/pyPf4r6/Poland.jpg";
+  const imgPoland = "https://i.ibb.co/VqC6X7S/Poland.png";
   return (
     <Container>
       <Carousel fade>
