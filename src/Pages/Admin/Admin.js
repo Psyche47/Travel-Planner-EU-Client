@@ -27,7 +27,7 @@ const Admin = () => {
                 variant="success"
                 onClick={() => setControl("manageServices")}
               >
-                Manage All Services
+                Manage All Bookings
               </Button>
             </ListGroup.Item>
             <ListGroup.Item variant="dark" as="li" className="admin-item">
