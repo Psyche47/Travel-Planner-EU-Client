@@ -55,7 +55,7 @@ const Service = ({ service }) => {
           </ListGroupItem>
           <ListGroupItem>
             <div className="d-flex justify-content-center">
-              <Link to={`/details/${_id}`}>
+              <Link to={`/bookings/${_id}`}>
                 <Button variant="success" className="text-light">
                   <Check /> Book Now
                 </Button>
