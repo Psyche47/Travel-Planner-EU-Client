@@ -8,19 +8,22 @@ import {
   Row,
   Form,
 } from "react-bootstrap";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import useServices from "../../Hooks/useServices";
 import { MdMoney as Price, MdOutlineReviews as Review } from "react-icons/md";
 import { AiOutlineStar as Star } from "react-icons/ai";
 import { GrLocation as Destination, GrMapLocation } from "react-icons/gr";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
+import Button from "@restart/ui/esm/Button";
 
 const Bookings = () => {
   const { user } = useAuth();
   const [services] = useServices();
   const { id } = useParams();
   const [singleService, setSingleService] = useState({});
+  const history = useHistory();
   const cardImg = {
     height: "200px",
     width: "286px",
@@ -105,103 +108,91 @@ const Bookings = () => {
               </h2>
 
               <Form.Group className="mb-1 w-75 mx-auto">
-                <Form.Label>Destination</Form.Label>
+                <Form.Label>Your Name</Form.Label>
                 <Form.Control
                   type="text"
-                  {...register("destination", { required: true })}
+                  {...register("name", { required: true })}
+                  defaultValue={user?.displayName}
                 />
                 <Form.Text className="text-muted">
-                  {errors.destination && (
+                  {errors.name && (
                     <h5 className="text-danger mt-1">This field is required</h5>
                   )}
                 </Form.Text>
+              </Form.Group>
+
+              <Form.Group className="mb-1 w-75 mx-auto">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="text"
+                  {...register("email")}
+                  defaultValue={user?.email}
+                  readOnly
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-1 w-75 mx-auto">
+                <Form.Label>Destination</Form.Label>
+                <Form.Control
+                  type="text"
+                  {...register("destination")}
+                  defaultValue={singleService.destination}
+                  readOnly
+                />
               </Form.Group>
 
               <Form.Group className="mb-1 w-75 mx-auto">
                 <Form.Label>City</Form.Label>
                 <Form.Control
                   type="text"
-                  {...register("city", { required: true })}
+                  {...register("city")}
+                  defaultValue={singleService.city}
+                  readOnly
                 />
-                <Form.Text className="text-muted">
-                  {errors.city && (
-                    <h5 className="text-danger mt-1">This field is required</h5>
-                  )}
-                </Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-1 w-75 mx-auto">
                 <Form.Label>Country</Form.Label>
                 <Form.Control
                   type="text"
-                  {...register("country", { required: true })}
+                  {...register("country")}
+                  defaultValue={singleService.country}
+                  readOnly
                 />
-                <Form.Text className="text-muted">
-                  {errors.country && (
-                    <h5 className="text-danger mt-1">This field is required</h5>
-                  )}
-                </Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-1 w-75 mx-auto">
                 <Form.Label>Cost of Trip</Form.Label>
                 <Form.Control
                   type="text"
-                  {...register("price", { required: true })}
+                  {...register("price")}
+                  defaultValue={singleService.price}
+                  readOnly
                 />
-                <Form.Text className="text-muted">
-                  {errors.price && (
-                    <h5 className="text-danger mt-1">This field is required</h5>
-                  )}
-                </Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-1 w-75 mx-auto">
-                <Form.Label>Image Link</Form.Label>
+                <Form.Label>Preferred Date</Form.Label>
                 <Form.Control
-                  type="url"
-                  {...register("image", { required: true })}
+                  type="date"
+                  {...register("date", { required: true })}
                 />
                 <Form.Text className="text-muted">
-                  {errors.image && (
-                    <h5 className="text-danger mt-1">This field is required</h5>
-                  )}
-                </Form.Text>
-              </Form.Group>
-
-              <Form.Group className="mb-1 w-75 mx-auto">
-                <Form.Label>Rating out of 5</Form.Label>
-                <Form.Control
-                  type="number"
-                  step="any"
-                  {...register(
-                    "rating",
-                    { required: true },
-                    { min: 0, max: 5 }
-                  )}
-                />
-                <Form.Text className="text-muted">
-                  {errors.rating && (
-                    <h5 className="text-danger mt-1">This field is required</h5>
-                  )}
-                </Form.Text>
-              </Form.Group>
-
-              <Form.Group className="mb-1 w-75 mx-auto">
-                <Form.Label>Number of Ratings</Form.Label>
-                <Form.Control
-                  type="number"
-                  {...register("number_of_reviews", { required: true })}
-                />
-                <Form.Text className="text-muted">
-                  {errors.number_of_reviews && (
-                    <h5 className="text-danger mt-1">This field is required</h5>
+                  {errors.date && (
+                    <h5 className="text-danger mt-1">Please pick a date.</h5>
                   )}
                 </Form.Text>
               </Form.Group>
 
               <Form.Group className="mt-2 w-75 mx-auto">
-                <input type="submit" className="btn btn-success" />
+                <input type="submit" className="btn btn-success me-4" />
+                <Link to="/services">
+                  <input
+                    type="submit"
+                    value="Other Services"
+                    className="btn btn-info me-2"
+                  />
+                </Link>
               </Form.Group>
             </Form>
           </Col>
