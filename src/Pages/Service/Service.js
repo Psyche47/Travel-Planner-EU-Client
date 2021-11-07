@@ -21,6 +21,7 @@ const Service = ({ service }) => {
     height: "200px",
     width: "286px",
   };
+
   return (
     <div className="col-lg-4 col-md-6 col-sm-12">
       <Card style={{ width: "18rem" }} className="mt-3 g-2 mx-auto">
