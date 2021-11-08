@@ -27,6 +27,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        sessionStorage.setItem("email", user.email);
         history.push(redirect_uri);
       })
       .catch((err) => {

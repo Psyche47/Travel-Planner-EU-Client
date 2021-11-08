@@ -10,20 +10,19 @@ import {
 } from "react-bootstrap";
 import { useParams, useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import useServices from "../../Hooks/useServices";
 import { MdMoney as Price, MdOutlineReviews as Review } from "react-icons/md";
 import { AiOutlineStar as Star } from "react-icons/ai";
 import { GrLocation as Destination, GrMapLocation } from "react-icons/gr";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
-import Button from "@restart/ui/esm/Button";
 
 const Bookings = () => {
   const { user } = useAuth();
-  const [services] = useServices();
+  //const [services] = useServices();
   const { id } = useParams();
   const [singleService, setSingleService] = useState({});
   const history = useHistory();
+  const redirect_uri = "/services";
   const cardImg = {
     height: "200px",
     width: "286px",
@@ -46,18 +45,19 @@ const Bookings = () => {
     data.city = singleService?.city;
     data.country = singleService?.country;
     data.price = singleService?.price;
-    // fetch("http://localhost:5000/addServices", {
-    //   method: "POST",
-    //   headers: { "content-type": "application/json" },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     if (res.insertedId) {
-    //       alert("Service added successfully.");
-    //       reset();
-    //     }
-    //   });
+    data.status = "pending";
+    fetch("http://localhost:5000/confirmedBooking", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.insertedId) {
+          alert("Service booked successfully.");
+          history.push(redirect_uri);
+        }
+      });
     console.log(data);
   };
   return (
