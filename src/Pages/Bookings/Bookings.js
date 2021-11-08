@@ -42,18 +42,23 @@ const Bookings = () => {
   }, []);
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/addServices", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.insertedId) {
-          alert("Service added successfully.");
-          reset();
-        }
-      });
+    data.destination = singleService?.destination;
+    data.city = singleService?.city;
+    data.country = singleService?.country;
+    data.price = singleService?.price;
+    // fetch("http://localhost:5000/addServices", {
+    //   method: "POST",
+    //   headers: { "content-type": "application/json" },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     if (res.insertedId) {
+    //       alert("Service added successfully.");
+    //       reset();
+    //     }
+    //   });
+    console.log(data);
   };
   return (
     <div>
@@ -136,7 +141,7 @@ const Bookings = () => {
                 <Form.Control
                   type="text"
                   {...register("destination")}
-                  defaultValue={singleService.destination}
+                  defaultValue={singleService?.destination}
                   readOnly
                 />
               </Form.Group>
@@ -146,7 +151,7 @@ const Bookings = () => {
                 <Form.Control
                   type="text"
                   {...register("city")}
-                  defaultValue={singleService.city}
+                  defaultValue={singleService?.city}
                   readOnly
                 />
               </Form.Group>
@@ -156,7 +161,7 @@ const Bookings = () => {
                 <Form.Control
                   type="text"
                   {...register("country")}
-                  defaultValue={singleService.country}
+                  defaultValue={singleService?.country}
                   readOnly
                 />
               </Form.Group>
@@ -166,7 +171,7 @@ const Bookings = () => {
                 <Form.Control
                   type="text"
                   {...register("price")}
-                  defaultValue={singleService.price}
+                  defaultValue={singleService?.price}
                   readOnly
                 />
               </Form.Group>
