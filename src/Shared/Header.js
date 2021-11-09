@@ -39,7 +39,7 @@ const Header = () => {
             <Nav.Link style={activeStyle} as={Link} to="/services">
               Services
             </Nav.Link>
-            <Nav.Link style={activeStyle} as={Link} to="/bookings">
+            <Nav.Link style={activeStyle} as={Link} to="/mybookings">
               My Bookings
             </Nav.Link>
             {user?.email ? (
