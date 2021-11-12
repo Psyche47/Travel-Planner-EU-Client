@@ -45,6 +45,7 @@ const Bookings = () => {
     data.city = singleService?.city;
     data.country = singleService?.country;
     data.price = singleService?.price;
+    data.image = singleService?.image;
     data.status = "pending";
     fetch("http://localhost:5000/confirmedBooking", {
       method: "POST",
