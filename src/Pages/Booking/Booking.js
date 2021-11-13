@@ -21,6 +21,15 @@ const Booking = ({ booking }) => {
     rating,
     number_of_reviews,
   } = booking;
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/deleteBooking/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+    console.log(id);
+  };
   return (
     <Col lg={4} md={6} sm={12}>
       <Card style={{ width: "18rem" }} className="mt-3 g-2 mx-auto">
@@ -54,13 +63,15 @@ const Booking = ({ booking }) => {
             {number_of_reviews} reviews.
           </ListGroupItem>
           <ListGroupItem>
-            {/* <div className="d-flex justify-content-center">
-                    <Link to={`/bookings/${_id}`}>
-                      <Button variant="success" className="text-light">
-                        <Check /> Book Now
-                      </Button>
-                    </Link>
-                  </div> */}
+            <div className="d-flex justify-content-center">
+              <Button
+                onClick={() => handleDelete(_id)}
+                variant="danger"
+                className="text-light"
+              >
+                <Check /> Cancel Booking
+              </Button>
+            </div>
           </ListGroupItem>
         </ListGroup>
       </Card>

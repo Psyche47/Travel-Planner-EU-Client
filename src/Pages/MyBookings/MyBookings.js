@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Button, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Booking from "../Booking/Booking";
 
@@ -18,11 +19,22 @@ const MyBookings = () => {
         <h4 className="display-5 rounded text-center text-light bg-dark p-3 mt-3">
           Booked Trips
         </h4>
-        <div className="d-flex justify-content-between">
+        <div>
           <Row>
-            {bookings.map((booking) => (
-              <Booking key={booking._id} booking={booking}></Booking>
-            ))}
+            {bookings.length === 0 ? (
+              <Col lg={12}>
+                <h4 className="rounded text-center text-light bg-dark p-3 mt-3">
+                  No Bookings Found. See all our affordable trip offers.
+                  <Link to="/services">
+                    <Button variant="primary">Services</Button>
+                  </Link>
+                </h4>
+              </Col>
+            ) : (
+              bookings.map((booking) => (
+                <Booking key={booking._id} booking={booking}></Booking>
+              ))
+            )}
           </Row>
         </div>
       </Container>
