@@ -1,12 +1,13 @@
 import React from "react";
 import { Card, Col, ListGroup, ListGroupItem, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { MdMoney as Price, MdOutlineReviews as Review } from "react-icons/md";
 import { AiOutlineStar as Star } from "react-icons/ai";
 import { BsBookmarkCheck as Check } from "react-icons/bs";
 import { GrLocation as Destination, GrMapLocation } from "react-icons/gr";
+import useBookings from "../../Hooks/useBookings";
 
 const Booking = ({ booking }) => {
+  const [bookings, setBookings] = useBookings();
   const cardImg = {
     height: "200px",
     width: "286px",
@@ -27,8 +28,14 @@ const Booking = ({ booking }) => {
       method: "DELETE",
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
-    console.log(id);
+      .then((data) => {
+        console.log(data);
+        // if (data.deletedCount) {
+        //   alert("Booking cancelled successfully.");
+        //   const remaining = bookings.filter((booking) => booking._id !== id);
+        //   setBookings(remaining);
+        // }
+      });
   };
   return (
     <Col lg={4} md={6} sm={12}>

@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
+import useBookings from "../../Hooks/useBookings";
 import Booking from "../Booking/Booking";
 
 const MyBookings = () => {
-  const [bookings, setBookings] = useState([]);
   //const email = sessionStorage.getItem("email");
-  const { user } = useAuth();
-  useEffect(() => {
-    fetch(`http://localhost:5000/myBookings/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setBookings(data));
-  }, []);
+  const [bookings] = useBookings();
   return (
     <div>
       <Container>
@@ -21,7 +14,7 @@ const MyBookings = () => {
         </h4>
         <div>
           <Row>
-            {bookings.length === 0 ? (
+            {!bookings.length ? (
               <Col lg={12}>
                 <h4 className="rounded text-center text-light bg-dark p-3 mt-3">
                   No Bookings Found. See all our affordable trip offers.
