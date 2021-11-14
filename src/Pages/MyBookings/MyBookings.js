@@ -13,14 +13,23 @@ import { MdMoney as Price, MdOutlineReviews as Review } from "react-icons/md";
 import { AiOutlineStar as Star } from "react-icons/ai";
 import { BsBookmarkCheck as Check } from "react-icons/bs";
 import { GrLocation as Destination, GrMapLocation } from "react-icons/gr";
+import useAuth from "../../Hooks/useAuth";
+import { useEffect, useState } from "react";
 
 const MyBookings = () => {
   //const email = sessionStorage.getItem("email");
-  const [bookings] = useBookings();
   const cardImg = {
     height: "200px",
     width: "286px",
   };
+  const { user } = useAuth();
+  const [bookings, setBookings] = useState([]);
+  const [control, setControl] = useState(false);
+  useEffect(() => {
+    fetch(`http://localhost:5000/myBookings/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setBookings(data));
+  }, [control]);
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/deleteBooking/${id}`, {
       method: "DELETE",
@@ -29,6 +38,7 @@ const MyBookings = () => {
       .then((data) => {
         if (data.deletedCount) {
           alert("Booking cancelled successfully.");
+          setControl(!control);
         }
       });
   };
