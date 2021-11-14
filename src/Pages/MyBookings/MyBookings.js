@@ -8,7 +8,6 @@ import {
   ListGroup,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import useBookings from "../../Hooks/useBookings";
 import { MdMoney as Price, MdOutlineReviews as Review } from "react-icons/md";
 import { AiOutlineStar as Star } from "react-icons/ai";
 import { BsBookmarkCheck as Check } from "react-icons/bs";

@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
-import useServices from "../../Hooks/useServices";
 
 const ManageAllServices = () => {
-  const [services] = useServices();
+  const [services, setServices] = useState();
+  const [control, setControl] = useState(false);
+  useEffect(() => {
+    fetch("http://localhost:5000/allServices")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, [control]);
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/deleteService/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          alert("Service deleted successfully.");
+          setControl(!control);
+        }
+      });
+  };
   return (
     <div>
-      <Table striped bordered hover>
+      <Table striped bordered hover responsive>
         <thead>
           <tr>
             <th>#</th>
@@ -20,7 +37,7 @@ const ManageAllServices = () => {
           </tr>
         </thead>
         {services?.map((service, index) => (
-          <tbody>
+          <tbody key={service._id}>
             <tr>
               <td>{index}</td>
               <td>{service?.destination}</td>
@@ -30,7 +47,12 @@ const ManageAllServices = () => {
               <td>{service?.rating}</td>
               <td>{service?.number_of_reviews}</td>
               <td>
-                <Button variant="danger">Delete</Button>
+                <Button
+                  variant="danger"
+                  onClick={() => handleDelete(service?._id)}
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           </tbody>
