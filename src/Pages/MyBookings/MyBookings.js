@@ -54,7 +54,9 @@ const MyBookings = () => {
                 <h4 className="rounded text-center text-light bg-dark p-3 mt-3">
                   No Bookings Found. See all our affordable trip offers.
                   <Link to="/services">
-                    <Button variant="primary">Services</Button>
+                    <Button variant="primary" className="ms-3">
+                      Services
+                    </Button>
                   </Link>
                 </h4>
               </Col>

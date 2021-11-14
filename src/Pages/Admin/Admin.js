@@ -3,7 +3,6 @@ import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import AddServices from "../AddServices/AddServices";
 import ManageAllBookings from "../ManageAllBookings/ManageAllBookings";
 import ManageAllServices from "../ManageAllServices/ManageAllServices";
-import "./Admin.css";
 
 const Admin = () => {
   const [render, setRender] = useState("addServices");
