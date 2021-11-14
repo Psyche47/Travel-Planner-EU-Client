@@ -61,7 +61,6 @@ const MyBookings = () => {
               </Col>
             ) : (
               bookings.map((booking) => (
-                // <Booking key={booking._id} booking={booking}></Booking>
                 <Col lg={4} md={6} sm={12} key={booking._id}>
                   <Card style={{ width: "18rem" }} className="mt-3 g-2 mx-auto">
                     <Card.Img
@@ -91,8 +90,7 @@ const MyBookings = () => {
                       </ListGroupItem>
                       <ListGroupItem>
                         <Star className="me-1" size="1.5em" />
-                        {booking?.rating}/5.0, {booking?.number_of_reviews}{" "}
-                        reviews.
+                        {booking?.rating}/5.0 reviews.
                       </ListGroupItem>
                       <ListGroupItem>
                         <Review className="me-1" size="1.5em" />

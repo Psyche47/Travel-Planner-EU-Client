@@ -48,7 +48,7 @@ const Service = ({ service }) => {
           </ListGroupItem>
           <ListGroupItem>
             <Star className="me-1" size="1.5em" />
-            {rating}/5.0, {number_of_reviews} reviews.
+            {rating}/5.0
           </ListGroupItem>
           <ListGroupItem>
             <Review className="me-1" size="1.5em" />

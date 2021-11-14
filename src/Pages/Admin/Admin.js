@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Button, Col, ListGroup, Row } from "react-bootstrap";
+import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
+import AddServices from "../AddServices/AddServices";
+import ManageAllServices from "../ManageAllServices/ManageAllServices";
+import "./Admin.css";
 
 const Admin = () => {
-  const [control, setControl] = useState("addServices");
-  console.log(control);
+  const [render, setRender] = useState("addServices");
+  console.log(render);
   return (
     <div>
       <h2 className="text-info text-center mt-1 bg-dark rounded mx-2 p-2">
@@ -11,34 +14,49 @@ const Admin = () => {
       </h2>
       <Row className="mx-2 border rounded ">
         <Col className="border border-dark p-1 bg-dark" lg={3} md={3} sm={12}>
-          <h4 className="text-center text-light">Dashboard</h4>
-          <ListGroup as="ol" numbered>
-            <ListGroup.Item variant="dark" as="li" className="admin-item">
-              <Button
-                variant="success"
-                onClick={() => setControl("addServices")}
-              >
-                {" "}
-                Add A Service
-              </Button>
-            </ListGroup.Item>
-            <ListGroup.Item variant="dark" as="li" className="admin-item">
-              <Button
-                variant="success"
-                onClick={() => setControl("manageServices")}
-              >
-                Manage All Bookings
-              </Button>
-            </ListGroup.Item>
-            <ListGroup.Item variant="dark" as="li" className="admin-item">
-              <Button variant="danger" onClick={() => setControl("logOut")}>
-                {" "}
-                Logout
-              </Button>
-            </ListGroup.Item>
-          </ListGroup>
+          <Container>
+            <h4 className="text-center text-light">Dashboard</h4>
+            <ListGroup as="ol" numbered>
+              <ListGroup.Item variant="dark" as="li" className="admin-item">
+                <Button
+                  variant="success"
+                  onClick={() => setRender("addServices")}
+                >
+                  {" "}
+                  Add A Service
+                </Button>
+              </ListGroup.Item>
+              <ListGroup.Item variant="dark" as="li" className="admin-item">
+                <Button
+                  variant="success"
+                  onClick={() => setRender("manageBookings")}
+                >
+                  Manage All Bookings
+                </Button>
+              </ListGroup.Item>
+              <ListGroup.Item variant="dark" as="li" className="admin-item">
+                <Button
+                  variant="success"
+                  onClick={() => setRender("manageServices")}
+                >
+                  Manage All Services
+                </Button>
+              </ListGroup.Item>
+              <ListGroup.Item variant="dark" as="li" className="admin-item">
+                <Button variant="danger" onClick={() => setRender("logOut")}>
+                  {" "}
+                  Logout
+                </Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Container>
         </Col>
-        <Col lg={9} md={9} sm={12}></Col>
+        <Col lg={9} md={9} sm={12}>
+          {render === "addServices" && <AddServices></AddServices>}
+          {render === "manageServices" && (
+            <ManageAllServices></ManageAllServices>
+          )}
+        </Col>
       </Row>
     </div>
   );

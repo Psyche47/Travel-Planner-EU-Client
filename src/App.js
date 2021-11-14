@@ -13,6 +13,7 @@ import NotFound from "./Pages/NotFound/NotFound";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
 import AddServices from "./Pages/AddServices/AddServices";
 import MyBookings from "./Pages/MyBookings/MyBookings";
+import ManageAllServices from "./Pages/ManageAllServices/ManageAllServices";
 
 function App() {
   return (
@@ -36,8 +37,11 @@ function App() {
             <PrivateRoute path="/bookings/:id">
               <ConfirmBookings></ConfirmBookings>
             </PrivateRoute>
-            <PrivateRoute path="/mybookings">
+            <PrivateRoute path="/myBookings">
               <MyBookings></MyBookings>
+            </PrivateRoute>
+            <PrivateRoute path="/manageAllServices">
+              <ManageAllServices></ManageAllServices>
             </PrivateRoute>
             <PrivateRoute path="/admin">
               <Admin></Admin>
