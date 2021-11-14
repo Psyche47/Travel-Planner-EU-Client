@@ -6,7 +6,6 @@ import ManageAllServices from "../ManageAllServices/ManageAllServices";
 
 const Admin = () => {
   const [render, setRender] = useState("addServices");
-  console.log(render);
   return (
     <div>
       <h2 className="text-info text-center mt-1 bg-dark rounded mx-2 p-2">

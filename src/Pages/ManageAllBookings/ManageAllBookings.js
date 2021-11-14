@@ -9,6 +9,10 @@ const ManageAllBookings = () => {
       .then((res) => res.json())
       .then((data) => setBookings(data));
   }, [control]);
+
+  const handleUpdate = (id) => {
+    console.log(id);
+  };
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/deleteBooking/${id}`, {
       method: "DELETE",
@@ -24,7 +28,10 @@ const ManageAllBookings = () => {
   return (
     <div>
       <div>
-        <Table striped bordered hover responsive>
+        <Table striped bordered hover responsive className="caption-top">
+          <caption className="text-center h3 bg-dark text-light rounded p-2">
+            Manage All Bookings
+          </caption>
           <thead>
             <tr>
               <th>#</th>
@@ -32,8 +39,8 @@ const ManageAllBookings = () => {
               <th>Email</th>
               <th>Date</th>
               <th>Destination</th>
-              <th>Country</th>
               <th>Status</th>
+              <th>Change Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -45,8 +52,15 @@ const ManageAllBookings = () => {
                 <td>{booking?.email}</td>
                 <td>{booking?.date}</td>
                 <td>{booking?.destination}</td>
-                <td>{booking?.country}</td>
                 <td>{booking?.status}</td>
+                <td>
+                  <Button
+                    variant="primary"
+                    onClick={() => handleUpdate(booking?._id)}
+                  >
+                    {booking?.status === "pending" ? "Approve" : "Pending"}
+                  </Button>
+                </td>
                 <td>
                   <Button
                     variant="danger"

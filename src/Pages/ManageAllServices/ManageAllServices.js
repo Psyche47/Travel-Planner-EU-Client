@@ -23,7 +23,10 @@ const ManageAllServices = () => {
   };
   return (
     <div>
-      <Table striped bordered hover responsive>
+      <Table striped bordered hover responsive className="caption-top">
+        <caption className="text-center h3 bg-dark text-light rounded p-2">
+          Manage All Services
+        </caption>
         <thead>
           <tr>
             <th>#</th>
