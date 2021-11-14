@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import AddServices from "../AddServices/AddServices";
+import ManageAllBookings from "../ManageAllBookings/ManageAllBookings";
 import ManageAllServices from "../ManageAllServices/ManageAllServices";
 import "./Admin.css";
 
@@ -55,6 +56,9 @@ const Admin = () => {
           {render === "addServices" && <AddServices></AddServices>}
           {render === "manageServices" && (
             <ManageAllServices></ManageAllServices>
+          )}
+          {render === "manageBookings" && (
+            <ManageAllBookings></ManageAllBookings>
           )}
         </Col>
       </Row>
