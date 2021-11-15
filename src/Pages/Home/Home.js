@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import useServices from "../../Hooks/useServices";
 import Banner from "../Banner/Banner";
+import FAQ from "../FAQ/FAQ";
 import Service from "../Service/Service";
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
           </div>
         </div>
       </Container>
+      <FAQ></FAQ>
     </div>
   );
 };
