@@ -15,7 +15,6 @@ import { BsBookmarkCheck as Check } from "react-icons/bs";
 import { GrLocation as Destination, GrMapLocation } from "react-icons/gr";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
-import useConfirmModal from "../../Hooks/useConfirmModal";
 
 const MyBookings = () => {
   //const email = sessionStorage.getItem("email");
