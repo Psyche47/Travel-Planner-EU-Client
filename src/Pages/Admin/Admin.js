@@ -41,12 +41,6 @@ const Admin = () => {
                   Manage All Services
                 </Button>
               </ListGroup.Item>
-              <ListGroup.Item variant="dark" as="li" className="admin-item">
-                <Button variant="danger" onClick={() => setRender("logOut")}>
-                  {" "}
-                  Logout
-                </Button>
-              </ListGroup.Item>
             </ListGroup>
           </Container>
         </Col>

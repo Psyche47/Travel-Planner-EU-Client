@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import useServices from "../../Hooks/useServices";
+import AboutUs from "../AboutUs/AboutUs";
 import Banner from "../Banner/Banner";
 import FAQ from "../FAQ/FAQ";
 import Service from "../Service/Service";
@@ -23,6 +24,7 @@ const Home = () => {
         </div>
       </Container>
       <FAQ></FAQ>
+      <AboutUs></AboutUs>
     </div>
   );
 };
