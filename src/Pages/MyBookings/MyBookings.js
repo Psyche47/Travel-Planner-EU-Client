@@ -24,11 +24,13 @@ const MyBookings = () => {
   const { user } = useAuth();
   const [bookings, setBookings] = useState([]);
   const [control, setControl] = useState(false);
+
   useEffect(() => {
     fetch(`http://localhost:5000/myBookings/${user.email}`)
       .then((res) => res.json())
       .then((data) => setBookings(data));
   }, [control]);
+
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/deleteBooking/${id}`, {
       method: "DELETE",
