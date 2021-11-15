@@ -6,6 +6,7 @@ import {
   Card,
   ListGroupItem,
   ListGroup,
+  Modal,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MdMoney as Price, MdOutlineReviews as Review } from "react-icons/md";
@@ -14,6 +15,7 @@ import { BsBookmarkCheck as Check } from "react-icons/bs";
 import { GrLocation as Destination, GrMapLocation } from "react-icons/gr";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
+import useConfirmModal from "../../Hooks/useConfirmModal";
 
 const MyBookings = () => {
   //const email = sessionStorage.getItem("email");
@@ -24,6 +26,10 @@ const MyBookings = () => {
   const { user } = useAuth();
   const [bookings, setBookings] = useState([]);
   const [control, setControl] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     fetch(`http://localhost:5000/myBookings/${user.email}`)
@@ -38,6 +44,7 @@ const MyBookings = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
+          handleClose();
           alert("Booking cancelled successfully.");
           setControl(!control);
         }
@@ -102,7 +109,8 @@ const MyBookings = () => {
                       <ListGroupItem>
                         <div className="d-flex justify-content-center">
                           <Button
-                            onClick={() => handleDelete(booking?._id)}
+                            // () => handleDelete(booking?._id)
+                            onClick={handleShow}
                             variant="danger"
                             className="text-light"
                           >
@@ -111,6 +119,30 @@ const MyBookings = () => {
                         </div>
                       </ListGroupItem>
                     </ListGroup>
+                    <Modal
+                      show={show}
+                      onHide={handleClose}
+                      backdrop="static"
+                      keyboard={false}
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title>Cancellation Confirmation</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Are you sure you want to cancel this booking?
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button
+                          variant="primary"
+                          onClick={() => handleDelete(booking?._id)}
+                        >
+                          I'm Sure
+                        </Button>
+                        <Button variant="secondary" onClick={handleClose}>
+                          No
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
                   </Card>
                 </Col>
               ))
