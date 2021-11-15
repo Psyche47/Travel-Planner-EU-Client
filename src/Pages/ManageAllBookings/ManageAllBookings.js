@@ -7,7 +7,7 @@ const ManageAllBookings = () => {
   const [status, setStatus] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/myBookings")
+    fetch("https://protected-cliffs-47621.herokuapp.com/myBookings")
       .then((res) => res.json())
       .then((data) => setBookings(data));
   }, [control]);
@@ -17,16 +17,19 @@ const ManageAllBookings = () => {
   };
 
   const handleUpdate = (id) => {
-    fetch(`http://localhost:5000/updateBookingStatus/${id}`, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ status }),
-    });
+    fetch(
+      `https://protected-cliffs-47621.herokuapp.com/updateBookingStatus/${id}`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ status }),
+      }
+    );
     setControl(!control);
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteBooking/${id}`, {
+    fetch(`https://protected-cliffs-47621.herokuapp.com/deleteBooking/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

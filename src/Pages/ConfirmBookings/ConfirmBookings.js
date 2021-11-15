@@ -34,7 +34,7 @@ const Bookings = () => {
   } = useForm();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/singleService/${id}`)
+    fetch(`https://protected-cliffs-47621.herokuapp.com/singleService/${id}`)
       .then((res) => res.json())
       .then((data) => setSingleService(data));
   }, []);
@@ -48,7 +48,7 @@ const Bookings = () => {
     data.rating = singleService?.rating;
     data.number_of_reviews = singleService?.number_of_reviews;
     data.status = "pending";
-    fetch("http://localhost:5000/confirmedBooking", {
+    fetch("https://protected-cliffs-47621.herokuapp.com/confirmedBooking", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

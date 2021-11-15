@@ -6,13 +6,13 @@ const ManageAllServices = () => {
   const [control, setControl] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allServices")
+    fetch("https://protected-cliffs-47621.herokuapp.com/allServices")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, [control]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteService/${id}`, {
+    fetch(`https://protected-cliffs-47621.herokuapp.com/deleteService/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

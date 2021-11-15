@@ -31,13 +31,15 @@ const MyBookings = () => {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myBookings/${user.email}`)
+    fetch(
+      `https://protected-cliffs-47621.herokuapp.com/myBookings/${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setBookings(data));
   }, [control]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteBooking/${id}`, {
+    fetch(`https://protected-cliffs-47621.herokuapp.com/deleteBooking/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
