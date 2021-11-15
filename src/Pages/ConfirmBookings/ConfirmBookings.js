@@ -45,6 +45,7 @@ const Bookings = () => {
     data.country = singleService?.country;
     data.price = singleService?.price;
     data.image = singleService?.image;
+    data.rating = singleService?.rating;
     data.number_of_reviews = singleService?.number_of_reviews;
     data.status = "pending";
     fetch("http://localhost:5000/confirmedBooking", {

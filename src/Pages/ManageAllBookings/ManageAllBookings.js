@@ -4,15 +4,27 @@ import { Table, Button } from "react-bootstrap";
 const ManageAllBookings = () => {
   const [bookings, setBookings] = useState();
   const [control, setControl] = useState(false);
+  const [status, setStatus] = useState("");
+
   useEffect(() => {
     fetch("http://localhost:5000/myBookings")
       .then((res) => res.json())
       .then((data) => setBookings(data));
   }, [control]);
 
-  const handleUpdate = (id) => {
-    console.log(id);
+  const handleStatus = (e) => {
+    setStatus(e.target.value);
   };
+
+  const handleUpdate = (id) => {
+    fetch(`http://localhost:5000/updateBookingStatus/${id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ status }),
+    });
+    setControl(!control);
+  };
+
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/deleteBooking/${id}`, {
       method: "DELETE",
@@ -25,6 +37,7 @@ const ManageAllBookings = () => {
         }
       });
   };
+
   return (
     <div>
       <div>
@@ -40,7 +53,8 @@ const ManageAllBookings = () => {
               <th>Date</th>
               <th>Destination</th>
               <th>Status</th>
-              <th>Change Status</th>
+              <th>New Status</th>
+              <th>Update Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -54,11 +68,14 @@ const ManageAllBookings = () => {
                 <td>{booking?.destination}</td>
                 <td>{booking?.status}</td>
                 <td>
+                  <input type="text" onChange={handleStatus} />
+                </td>
+                <td>
                   <Button
-                    variant="primary"
+                    variant="danger"
                     onClick={() => handleUpdate(booking?._id)}
                   >
-                    {booking?.status === "pending" ? "Approve" : "Pending"}
+                    Update
                   </Button>
                 </td>
                 <td>

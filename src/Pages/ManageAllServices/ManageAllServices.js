@@ -4,11 +4,13 @@ import { Table, Button } from "react-bootstrap";
 const ManageAllServices = () => {
   const [services, setServices] = useState();
   const [control, setControl] = useState(false);
+
   useEffect(() => {
     fetch("http://localhost:5000/allServices")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, [control]);
+
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/deleteService/${id}`, {
       method: "DELETE",
