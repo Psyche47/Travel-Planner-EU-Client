@@ -15,6 +15,7 @@ import AddServices from "./Pages/AddServices/AddServices";
 import MyBookings from "./Pages/MyBookings/MyBookings";
 import ManageAllServices from "./Pages/ManageAllServices/ManageAllServices";
 import ManageAllBookings from "./Pages/ManageAllBookings/ManageAllBookings";
+import Footer from "./Shared/Footer";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
               <NotFound></NotFound>
             </Route>
           </Switch>
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </div>
