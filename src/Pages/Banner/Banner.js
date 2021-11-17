@@ -48,12 +48,6 @@ const Banner = () => {
             src={imgPoland}
             alt="Third slide"
           />
-
-          <Carousel.Caption>
-            <Link to="/FAQ">
-              <Button variant="info">View Frequently Asked Questions</Button>
-            </Link>
-          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
     </Container>
